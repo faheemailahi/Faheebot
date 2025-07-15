@@ -19,7 +19,7 @@ FaheeBot is a simple AI chatbot built using **Dialogflow** and **Node.js**, deve
 Keep your `Dialogflow-key.json` file private. Do not upload it to GitHub.
 
 ## 🌐 Live Demo
-Try it live 👉 [Click here](https://0e6860e4-58dc-4391-8279-1b7b47964a02-00-252wttf0jofb6.pike.replit.dev)
+Try it live 👉 [Click here](https://fahiibot.netlify.app/)
 
 ---
 
