@@ -4,6 +4,7 @@
   <title>Cloud Computing Assistant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ====== STYLE ====== -->
   <style>
     body {
       margin: 0;
@@ -49,33 +50,28 @@
       box-shadow: 0 12px 25px rgba(0,0,0,0.4);
     }
 
-     df-messenger {
+    /* Chat container styling */
+    #chatContainer {
+      display: none;
+      margin: 40px auto;
+      width: 370px;
+    }
 
-  /* Make whole chat background white */
-     --df-messenger-chat-background-color: #ffffff;
+    /* Dialogflow theme customization */
+    df-messenger {
+      --df-messenger-chat-background-color: #ffffff;
+      --df-messenger-button-titlebar-color: #0b1f3a;
+      --df-messenger-user-message: #f3f4f6;
+      --df-messenger-font-color: #0b1f3a;
+      --df-messenger-bot-message: #f3f4f6;
+      --df-messenger-send-icon: #0b1f3a;
+    }
 
-  /* Top header bar (navy blue) */
-     --df-messenger-button-titlebar-color: #0b1f3a;
-
-  /* User message bubble navy */
-     --df-messenger-user-message: #f3f4f6
-
-  /* Text color inside messages */
-     --df-messenger-font-color: #0b1f3a
-
-  /* Bot message background */
-     --df-messenger-bot-message: #f3f4f6;
-
-  /* Send icon */
-     --df-messenger-send-icon: #0b1f3a;
-     --df-messenger-button-display: none;
-    }  
     .footer {
       margin-top: 80px;
       font-size: 14px;
       color: #94a3b8;
     }
-    
   </style>
 </head>
 
@@ -88,44 +84,39 @@
       service models, advantages and more in a simple way.
     </p>
 
-    <button class="chat-btn" onclick="openChat()">
+    <button class="chat-btn" onclick="toggleChat()">
       💬 Click to Chat
     </button>
   </div>
 
-  <!-- Dialogflow Script -->
+  <!-- ====== DIALOGFLOW SCRIPT ====== -->
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 
-  <df-messenger
-    intent="WELCOME"
-    chat-title="Cloud Assistant"
-    agent-id="80b882e9-8180-4793-91e1-480378569e76"
-    language-code="en"
-    id="chatbot">
-  </df-messenger>
-<script>
-  function openChat() {
-    const interval = setInterval(() => {
-      const dfMessenger = document.querySelector("df-messenger");
+  <!-- ====== CHAT CONTAINER ====== -->
+  <div id="chatContainer">
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Cloud Assistant"
+      agent-id="80b882e9-8180-4793-91e1-480378569e76"
+      language-code="en">
+    </df-messenger>
+  </div>
 
-      if (
-        dfMessenger &&
-        dfMessenger.shadowRoot &&
-        dfMessenger.shadowRoot.querySelector("df-messenger-chat")
-      ) {
-        const chat = dfMessenger.shadowRoot.querySelector("df-messenger-chat");
+  <!-- ====== TOGGLE SCRIPT ====== -->
+  <script>
+    function toggleChat() {
+      const chat = document.getElementById("chatContainer");
+      const button = document.querySelector(".chat-btn");
 
-        if (chat.shadowRoot) {
-          const button = chat.shadowRoot.querySelector("button");
-          if (button) {
-            button.click();
-            clearInterval(interval);
-          }
-        }
+      if (chat.style.display === "none" || chat.style.display === "") {
+        chat.style.display = "block";
+        button.innerText = "❌ Close Chat";
+      } else {
+        chat.style.display = "none";
+        button.innerText = "💬 Click to Chat";
       }
-    }, 300);
-  }
-</script>
+    }
+  </script>
 
   <div class="footer">
     Built by Faheema 💙 | Cloud Explanation Bot
