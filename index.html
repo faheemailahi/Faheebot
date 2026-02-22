@@ -7,61 +7,97 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
       color: white;
       text-align: center;
-      padding: 40px 20px;
+    }
+
+    .container {
+      padding: 80px 20px;
     }
 
     h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: 40px;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #6366f1, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     p {
       font-size: 18px;
+      color: #cbd5e1;
       max-width: 600px;
-      margin: 0 auto 30px;
+      margin: 0 auto 40px;
     }
 
-    .footer {
-      margin-top: 40px;
-      font-size: 14px;
-      opacity: 0.8;
+    .chat-btn {
+      background: linear-gradient(90deg, #6366f1, #22d3ee);
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .chat-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
     }
 
     df-messenger {
-      --df-messenger-button-titlebar-color: #005bea;
-      --df-messenger-chat-background-color: #ffffff;
-      --df-messenger-font-color: black;
-      --df-messenger-send-icon: #005bea;
+      --df-messenger-button-titlebar-color: #1e293b;
+      --df-messenger-chat-background-color: #0f172a;
+      --df-messenger-font-color: white;
+      --df-messenger-send-icon: #6366f1;
+    }
+
+    .footer {
+      margin-top: 80px;
+      font-size: 14px;
+      color: #94a3b8;
     }
   </style>
 </head>
 
 <body>
 
-  <h1>☁ Cloud Computing Assistant</h1>
-  <p>
-    Welcome! This chatbot helps you understand Cloud Computing concepts 
-    like definition, types, service models, advantages and more — 
-    in a simple and clear way.
-  </p>
+  <div class="container">
+    <h1>☁ Cloud Computing Assistant</h1>
+    <p>
+      Learn cloud computing concepts like definition, types,
+      service models, advantages and more in a simple way.
+    </p>
 
-  <!-- Dialogflow Messenger Script -->
+    <button class="chat-btn" onclick="openChat()">
+      💬 Click to Chat
+    </button>
+  </div>
+
+  <!-- Dialogflow Script -->
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 
-  <!-- Dialogflow Messenger Chat Widget -->
   <df-messenger
     intent="WELCOME"
     chat-title="Cloud Assistant"
     agent-id="80b882e9-8180-4793-91e1-480378569e76"
-    language-code="en">
+    language-code="en"
+    style="display:none;"
+    id="chatbot">
   </df-messenger>
 
+  <script>
+    function openChat() {
+      document.getElementById("chatbot").style.display = "block";
+    }
+  </script>
+
   <div class="footer">
-    Created by Faheema 💙 | Cloud Computing Explanation Bot
+    Built by Faheema 💙 | Cloud Explanation Bot
   </div>
 
 </body>
