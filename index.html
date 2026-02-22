@@ -102,11 +102,15 @@
     style="display:none;"
     id="chatbot">
   </df-messenger>
-
   <script>
-    function openChat() {
-      document.getElementById("chatbot").style.display = "block";
-    }
+  function openChat() {
+    const dfMessenger = document.querySelector("df-messenger");
+    dfMessenger.shadowRoot
+      .querySelector("df-messenger-chat")
+      .shadowRoot
+      .querySelector("button")
+      .click();
+  }
   </script>
 
   <div class="footer">
