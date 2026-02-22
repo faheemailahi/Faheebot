@@ -99,19 +99,20 @@
     chat-title="Cloud Assistant"
     agent-id="80b882e9-8180-4793-91e1-480378569e76"
     language-code="en"
-    style="display:none;"
     id="chatbot">
   </df-messenger>
-  <script>
+ <script>
   function openChat() {
     const dfMessenger = document.querySelector("df-messenger");
-    dfMessenger.shadowRoot
+
+    const button = dfMessenger.shadowRoot
       .querySelector("df-messenger-chat")
       .shadowRoot
-      .querySelector("button")
-      .click();
+      .querySelector("button");
+
+    button.click();
   }
-  </script>
+ </script>
 
   <div class="footer">
     Built by Faheema 💙 | Cloud Explanation Bot
