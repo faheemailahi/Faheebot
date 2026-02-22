@@ -74,6 +74,9 @@
       font-size: 14px;
       color: #94a3b8;
     }
+    df-messenger::part(button) {
+  display: none;
+    }
   </style>
 </head>
 
@@ -99,23 +102,28 @@
     chat-title="Cloud Assistant"
     agent-id="80b882e9-8180-4793-91e1-480378569e76"
     language-code="en"
-    df-messenger::part(button) {
-  display: none;
-}
     id="chatbot">
   </df-messenger>
- <script>
+<script>
   function openChat() {
     const dfMessenger = document.querySelector("df-messenger");
 
-    const button = dfMessenger.shadowRoot
-      .querySelector("df-messenger-chat")
-      .shadowRoot
-      .querySelector("button");
+    if (!dfMessenger.shadowRoot) {
+      alert("Chatbot still loading... please try again.");
+      return;
+    }
 
+    const chat = dfMessenger.shadowRoot.querySelector("df-messenger-chat");
+
+    if (!chat.shadowRoot) {
+      alert("Chatbot still loading... please try again.");
+      return;
+    }
+
+    const button = chat.shadowRoot.querySelector("button");
     button.click();
   }
- </script>
+      </script>
 
   <div class="footer">
     Built by Faheema 💙 | Cloud Explanation Bot
