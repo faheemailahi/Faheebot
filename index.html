@@ -61,7 +61,7 @@
      --df-messenger-user-message: #0b1f3a;
 
   /* Text color inside messages */
-     --df-messenger-font-color: white;
+     --df-messenger-font-color: #0b1f3a
 
   /* Bot message background */
      --df-messenger-bot-message: #f3f4f6;
@@ -74,8 +74,8 @@
       font-size: 14px;
       color: #94a3b8;
     }
-    df-messenger::part(button) {
-  display: none;
+    df-messenger {
+  --df-messenger-button-display: none;
     }
   </style>
 </head>
@@ -106,24 +106,27 @@
   </df-messenger>
 <script>
   function openChat() {
-    const dfMessenger = document.querySelector("df-messenger");
+    const interval = setInterval(() => {
+      const dfMessenger = document.querySelector("df-messenger");
 
-    if (!dfMessenger.shadowRoot) {
-      alert("Chatbot still loading... please try again.");
-      return;
-    }
+      if (
+        dfMessenger &&
+        dfMessenger.shadowRoot &&
+        dfMessenger.shadowRoot.querySelector("df-messenger-chat")
+      ) {
+        const chat = dfMessenger.shadowRoot.querySelector("df-messenger-chat");
 
-    const chat = dfMessenger.shadowRoot.querySelector("df-messenger-chat");
-
-    if (!chat.shadowRoot) {
-      alert("Chatbot still loading... please try again.");
-      return;
-    }
-
-    const button = chat.shadowRoot.querySelector("button");
-    button.click();
+        if (chat.shadowRoot) {
+          const button = chat.shadowRoot.querySelector("button");
+          if (button) {
+            button.click();
+            clearInterval(interval);
+          }
+        }
+      }
+    }, 300);
   }
-      </script>
+</script>
 
   <div class="footer">
     Built by Faheema 💙 | Cloud Explanation Bot
