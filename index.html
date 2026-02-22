@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FaheeBot</title>
-  </head>
-  <body>
-    <h2>Chat with FaheeBot 💬</h2>
+<head>
+  <title>Cloud Computing Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Dialogflow Messenger Script -->
-    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-    <!-- Dialogflow Messenger Chat Widget -->
-    <df-messenger
-      intent="WELCOME"
-      chat-title="Fbot"
-      agent-id="80b882e9-8180-4793-91e1-480378569e76"
-      language-code="en"
-    ></df-messenger>
-  </body>
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    df-messenger {
+      --df-messenger-button-titlebar-color: #005bea;
+      --df-messenger-chat-background-color: #ffffff;
+      --df-messenger-font-color: black;
+      --df-messenger-send-icon: #005bea;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>☁ Cloud Computing Assistant</h1>
+  <p>
+    Welcome! This chatbot helps you understand Cloud Computing concepts 
+    like definition, types, service models, advantages and more — 
+    in a simple and clear way.
+  </p>
+
+  <!-- Dialogflow Messenger Script -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+  <!-- Dialogflow Messenger Chat Widget -->
+  <df-messenger
+    intent="WELCOME"
+    chat-title="Cloud Assistant"
+    agent-id="80b882e9-8180-4793-91e1-480378569e76"
+    language-code="en">
+  </df-messenger>
+
+  <div class="footer">
+    Created by Faheema 💙 | Cloud Computing Explanation Bot
+  </div>
+
+</body>
 </html>
